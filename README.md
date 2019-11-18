@@ -30,6 +30,7 @@ In the end you only need two files:
 ## License
 
 Copyright (c) 2015, Russell
+
 Copyright (c) 2019, github.com/AlexIII
 
 [BSD 2-Clause License](LICENSE)
