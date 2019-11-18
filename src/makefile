@@ -25,7 +25,7 @@
 #
 
 CC := $(CC)
-CFLAGS := -c -O2 -Wall $(CFLAGS)
+CFLAGS := -c -fPIC -O2 -Wall $(CFLAGS)
 LDFLAGS := -O2 -Wall $(LDFLAGS)
 
 SRCDIR := .
@@ -39,14 +39,16 @@ DEPS := $(OBJS:.o=.d)
 
 CODEROBJ   := coder.o
 DECODEROBJ := decoder.o
+LIBG729AOBJ := g729a_interface.o
 
 -include $(DEPS)
 
 EXECUTABLEENCODER := coder
 EXECUTABLEDECODER := decoder
+LIBG729A := libg729a.so
 
 .PHONY: all
-all : $(EXECUTABLEENCODER) $(EXECUTABLEDECODER)
+all : $(EXECUTABLEENCODER) $(EXECUTABLEDECODER) $(LIBG729A)
 
 $(OBJDIR)/%.o : $(SRCDIR)/%.c
 	@mkdir -p $(@D)
@@ -66,7 +68,10 @@ $(EXECUTABLEENCODER) : $(OBJDIR)/$(CODEROBJ) $(OBJS)
 $(EXECUTABLEDECODER) : $(OBJDIR)/$(DECODEROBJ) $(OBJS)
 	$(CC) $(LDFLAGS) -o $@ $^
 
+$(LIBG729A) : $(OBJDIR)/$(LIBG729AOBJ) $(OBJS)
+	$(CC) $(LDFLAGS) -shared -o $@ $^
+
 .PHONY: clean
 clean:
 	@rm -rf $(OBJDIR)
-	@rm -f $(EXECUTABLEENCODER) $(EXECUTABLEDECODER)
+	@rm -f $(EXECUTABLEENCODER) $(EXECUTABLEDECODER) $(LIBG729A)

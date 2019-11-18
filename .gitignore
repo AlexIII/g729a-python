@@ -1,0 +1,6 @@
+src/obj
+src/coder
+src/decoder
+src/*.so
+release/
+*.zip

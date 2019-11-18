@@ -1,10 +1,38 @@
-# g729a
+# [G.729А](https://en.wikipedia.org/wiki/G.729#G.729_Annex_A) for python 3
 
-To support multi-instance in multi-thread environment.
+Encodes PCM 16-bit 80 sample chunks to 10 bytes of G.729А and back.
+
+Good for speech.
+
+Fixed compression ratio: 16:1.
+
+## Usage
+
+- Linux x64
+
+  you can use precompiled libg729a.so
+
+- Other
+
+  ```bash
+  cd src
+  make
+  cp libg729a.so ../python
+  ```
+
+See `python/example.py` for usage from python.
+
+In the end you only need two files: 
+
+- libg729a.so - g729a library file
+- g729a.py - python wrapper
 
 ## License
 
-Released under the [BSD 2-Clause License](LICENSE)
+Copyright (c) 2015, Russell
+Copyright (c) 2019, github.com/AlexIII
+
+[BSD 2-Clause License](LICENSE)
 
 ## Notice
 

@@ -1,0 +1,2 @@
+python3 g729a.py encode ./SPEECH.IN ./SPEECH.g729a
+python3 g729a.py decode ./SPEECH.g729a ./SPEECH.OUT
