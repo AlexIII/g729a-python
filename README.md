@@ -10,7 +10,7 @@ Fixed compression ratio 16:1.
 
 - Linux x64, Windows x64
 
-  you can use precompiled libg729a.so
+  you can use precompiled libg729a.so (linux) or libg729a.dll (windows)
 
 - Other
 
