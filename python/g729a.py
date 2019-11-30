@@ -1,6 +1,15 @@
 from typing import *
 import ctypes
 
+import os
+g729a_lib_path = ''
+if os.name == 'nt':
+    g729a_lib_path = './libg729a.dll'
+elif os.name == 'posix':
+    g729a_lib_path = './libg729a.so'
+else:
+    raise RuntimeError("Unknown OS")
+
 class G729Acoder:
     def __init__(
         self, 
@@ -28,7 +37,7 @@ class G729Acoder:
 
 class G729Aencoder(G729Acoder):
     def __init__(self) -> None:
-        g729aLib = ctypes.CDLL('./libg729a.so')
+        g729aLib = ctypes.CDLL(g729a_lib_path)
         super().__init__(
             g729aLib.G729A_Encoder_Get_Size,
             g729aLib.G729A_Encoder_Init,
@@ -39,7 +48,7 @@ class G729Aencoder(G729Acoder):
 
 class G729Adecoder(G729Acoder):
     def __init__(self) -> None:
-        g729aLib = ctypes.CDLL('./libg729a.so')
+        g729aLib = ctypes.CDLL(g729a_lib_path)
         super().__init__(
             g729aLib.G729A_Decoder_Get_Size,
             g729aLib.G729A_Decoder_Init,

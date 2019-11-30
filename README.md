@@ -4,11 +4,11 @@ Encodes PCM 16-bit 80 sample chunks to 10 bytes of G.729А and back.
 
 Good for speech.
 
-Fixed compression ratio: 16:1.
+Fixed compression ratio 16:1.
 
 ## Usage
 
-- Linux x64
+- Linux x64, Windows x64
 
   you can use precompiled libg729a.so
 
@@ -24,7 +24,7 @@ See `python/example.py` for usage from python.
 
 In the end you only need two files: 
 
-- libg729a.so - g729a library file
+- libg729a.so (linux) or libg729a.dll (windows) - g729a library file
 - g729a.py - python wrapper
 
 ## License
