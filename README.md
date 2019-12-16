@@ -4,7 +4,7 @@ Encodes PCM 16-bit 80 sample chunks to 10 bytes of G.729А and back.
 
 Good for speech.
 
-Fixed compression ratio 16:1.
+Fixed compression ratio 16:1 (16kbps PCM -> 1kbps G.729A).
 
 ## Usage
 
