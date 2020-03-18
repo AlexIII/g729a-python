@@ -11,6 +11,8 @@ else:
     raise RuntimeError("Unknown OS")
 
 class G729Acoder:
+    SAMPLES_IN_FRAME = 80
+    BYTES_IN_COMPRESSED_FRAME = 10
     def __init__(
         self, 
         f_stateSize: Callable[[], int], 
@@ -42,8 +44,8 @@ class G729Aencoder(G729Acoder):
             g729aLib.G729A_Encoder_Get_Size,
             g729aLib.G729A_Encoder_Init,
             g729aLib.G729A_Encoder_Process,
-            80*2,
-            10
+            self.SAMPLES_IN_FRAME*2,
+            self.BYTES_IN_COMPRESSED_FRAME
         )
 
 class G729Adecoder(G729Acoder):
@@ -53,8 +55,8 @@ class G729Adecoder(G729Acoder):
             g729aLib.G729A_Decoder_Get_Size,
             g729aLib.G729A_Decoder_Init,
             g729aLib.G729A_Decoder_Process,
-            10,
-            80*2
+            self.BYTES_IN_COMPRESSED_FRAME,
+            self.SAMPLES_IN_FRAME*2
         )
 
 
